@@ -16,6 +16,7 @@ Raw data description:
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 Raw data set includes the following data:
+
 1. Time domain accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ (prefix 't' to denote time), captured at a constant rate of 50 Hz
 2. Acceleration signal separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ)
 3. Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ) obtained from the body linear acceleration and angular velocity derived in time
