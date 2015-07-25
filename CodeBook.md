@@ -15,6 +15,62 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 Raw data description:
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
+Raw data set includes the following data:
+1. Time domain accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ (prefix 't' to denote time), captured at a constant rate of 50 Hz
+2. Acceleration signal separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ)
+3. Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ) obtained from the body linear acceleration and angular velocity derived in time
+4. Magnitude of these three-dimensional signals calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag)
+5. fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag ('f' to indicate frequency domain signals) obtained through a Fast Fourier Transform (FFT)
+
+Signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+   tBodyAcc-XYZ
+   tGravityAcc-XYZ
+   tBodyAccJerk-XYZ
+   tBodyGyro-XYZ
+   tBodyGyroJerk-XYZ
+   tBodyAccMag
+   tGravityAccMag
+   tBodyAccJerkMag
+   tBodyGyroMag
+   tBodyGyroJerkMag
+   fBodyAcc-XYZ
+   fBodyAccJerk-XYZ
+   fBodyGyro-XYZ
+   fBodyAccMag
+   fBodyAccJerkMag
+   fBodyGyroMag
+   fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+   mean(): Mean value
+   std(): Standard deviation
+   mad(): Median absolute deviation 
+   max(): Largest value in array
+   min(): Smallest value in array
+   sma(): Signal magnitude area
+   energy(): Energy measure. Sum of the squares divided by the number of values. 
+   iqr(): Interquartile range 
+   entropy(): Signal entropy
+   arCoeff(): Autorregresion coefficients with Burg order equal to 4
+   correlation(): correlation coefficient between two signals
+   maxInds(): index of the frequency component with largest magnitude
+   meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+   skewness(): skewness of the frequency domain signal 
+   kurtosis(): kurtosis of the frequency domain signal 
+   bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+   angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+   gravityMean
+   tBodyAccMean
+   tBodyAccJerkMean
+   tBodyGyroMean
+   tBodyGyroJerkMean
+
 ## Data Transformation
 
 In order to obtain a full dataset containing both training and testing data, the identical sets of steps were performed for each group of files in ‘train’ and ‘test’ categories.
@@ -38,88 +94,24 @@ Activity ID are integers within 1-6 range.
 **_Finally_**, two sets were merged together, train set being first.
 
 For additional clarity activity number IDs were substituted by activity names as follows:
-1 WALKING
-2 WALKING_UPSTAIRS
-3 WALKING_DOWNSTAIRS
-4 SITTING
-5 STANDING
-6 LAYING
+1. WALKING
+2. WALKING_UPSTAIRS
+3. WALKING_DOWNSTAIRS
+4. SITTING
+5. STANDING
+6. LAYING
 
 Data location: _activity_labels.txt_
 The variable name "activity_id" was changed to "activity"
 
-The resulting merged file was transformed into the final dataset contained in _"tidy-av-activity-data.txt"_ by melting and recasting data to include average value of each variable for every combination of subject and activity
+The resulting merged file
+1. was subsetted to include only variables that represented mean and standard deviation of each measurment, _and_
+2. was transformed into the final dataset contained in _"tidy-av-activity-data.txt"_ by melting and recasting data to include average value of each variable for every combination of subject and activity
 
 ## Variables
 
-Final dataset includes the following variables:
+Final dataset includes variables:
+1. subject_id – integer between 1 and 30. Test subject ID corresponding to each row
+2. activity – activity that test subject performed (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
 
-Final dataset includes the following variables:
-[1] subject_id – integer between 1 and 30. Test subject ID corresponding to each row
-[2] activity – activity that test subject performed (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-[3] tBodyAcc-mean()-X" – remaining variables are copied directly from raw data source
-[4] tBodyAcc-mean()-Y
-[5] tBodyAcc-mean()-Z
-[6] tBodyAcc-std()-X
-[7] tBodyAcc-std()-Y
-[8] tBodyAcc-std()-Z
-[9] tGravityAcc-mean()-X
-[10] tGravityAcc-mean()-Y
-[11] tGravityAcc-mean()-Z
-[12] tGravityAcc-std()-X
-[13] tGravityAcc-std()-Y
-[14] tGravityAcc-std()-Z
-[15] tBodyAccJerk-mean()-X
-[16] tBodyAccJerk-mean()-Y
-[17] tBodyAccJerk-mean()-Z
-[18] tBodyAccJerk-std()-X
-[19] tBodyAccJerk-std()-Y
-[20] tBodyAccJerk-std()-Z
-[21] tBodyGyro-mean()-X
-[22] tBodyGyro-mean()-Y
-[23] tBodyGyro-mean()-Z
-[24] tBodyGyro-std()-X
-[25] tBodyGyro-std()-Y
-[26] tBodyGyro-std()-Z
-[27] tBodyGyroJerk-mean()-X
-[28] tBodyGyroJerk-mean()-Y
-[29] tBodyGyroJerk-mean()-Z
-[30] tBodyGyroJerk-std()-X
-[31] tBodyGyroJerk-std()-Y
-[32] tBodyGyroJerk-std()-Z
-[33] tBodyAccMag-mean()
-[34] tBodyAccMag-std()
-[35] tGravityAccMag-mean()
-[36] tGravityAccMag-std()
-[37] tBodyAccJerkMag-mean()
-[38] tBodyAccJerkMag-std()
-[39] tBodyGyroMag-mean()
-[40] tBodyGyroMag-std()
-[41] tBodyGyroJerkMag-mean()
-[42] tBodyGyroJerkMag-std()
-[43] fBodyAcc-mean()-X
-[44] fBodyAcc-mean()-Y
-[45] fBodyAcc-mean()-Z
-[46] fBodyAcc-std()-X
-[47] fBodyAcc-std()-Y
-[48] fBodyAcc-std()-Z
-[49] fBodyAccJerk-mean()-X
-[50] fBodyAccJerk-mean()-Y
-[51] fBodyAccJerk-mean()-Z
-[52] fBodyAccJerk-std()-X
-[53] fBodyAccJerk-std()-Y
-[54] fBodyAccJerk-std()-Z
-[55] fBodyGyro-mean()-X
-[56] fBodyGyro-mean()-Y
-[57] fBodyGyro-mean()-Z
-[58] fBodyGyro-std()-X
-[59] fBodyGyro-std()-Y
-[60] fBodyGyro-std()-Z
-[61] fBodyAccMag-mean()
-[62] fBodyAccMag-std()
-[63] fBodyBodyAccJerkMag-mean()
-[64] fBodyBodyAccJerkMag-std()
-[65] fBodyBodyGyroMag-mean()
-[66] fBodyBodyGyroMag-std()
-[67] fBodyBodyGyroJerkMag-mean()
-[68] fBodyBodyGyroJerkMag-std
+Remaining 64 variables match mean() and std() variables of original raw data but they represent average value of each variable by subject by activity.
